@@ -1,0 +1,41 @@
+logger_level: INFO
+env: "prod"
+job_type: service
+debug: False
+
+datasource:
+  mysql:
+    type: mysql
+    password: your-mysql-password
+    user: root
+    database: autoclip
+    host: mysql
+    port: 3306
+
+autoclip_service_config:
+  common:
+    cache_path: "$PROJECT_ROOT/output/cache"
+    output_dir: "$PROJECT_ROOT/output/clipped"
+    debug_clip_frame_output_dir: "$PROJECT_ROOT/output/clip_snippet"
+  ping_pong:
+    reserve_tail_seconds: 1.0
+    reserve_header_seconds: 1.0
+    is_ignore_playback: True
+  badminton:
+    mode: 0
+    match_type: 0
+
+service:
+  host: 0.0.0.0
+  port: 6583
+  remote_video_output_dir: 'auto_clip/output/video'
+  handle_video_message_topic: HANDLE_VIDEO_MESSAGE_START_TOPIC
+
+kafka:
+  bootstrap_servers: "kafka:9092"
+  consumer_group: "autoclip_algorithm_group"
+  auto_offset_reset: "latest"
+
+internal:
+  http:
+    base_url: http://localhost:48080/admin-api

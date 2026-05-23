@@ -1,0 +1,22 @@
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+output
+runs
+cache
+logs
+**/__pycache__
+typings
+**/.ruff_cache
+.specstory
+.venv
+
+# Docker local build secrets / artifacts
+docker/build.env
+docker/**/autoclip-algorithm.tar.gz
+docker/**/requirements.txt
