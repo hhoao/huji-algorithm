@@ -66,6 +66,10 @@ ignore = [
     "F401",    # 允许未使用的导入（用于re-export）
 ]
 
+"main.py" = [
+    "E402",    # 依赖检查需在 src 导入之前执行
+]
+
 [tool.ruff.lint.isort]
 # 导入排序配置
 known-first-party = ["autoclip"]  # 替换为你的项目名

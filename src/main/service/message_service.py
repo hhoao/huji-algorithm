@@ -573,12 +573,14 @@ class MessageService:
                     producer.produce(
                         topic=self.handle_video_message_topic,
                         value=msg_json,
-                        on_delivery=lambda err, msg: LOG.error(f"重新发送消息失败: {err}")
-                        if err
-                        else LOG.info(
-                            f"消息重新发送成功: topic={msg.topic()}, "
-                            f"partition={msg.partition()}, "
-                            f"offset={msg.offset()}"
+                        on_delivery=lambda err, msg: (
+                            LOG.error(f"重新发送消息失败: {err}")
+                            if err
+                            else LOG.info(
+                                f"消息重新发送成功: topic={msg.topic()}, "
+                                f"partition={msg.partition()}, "
+                                f"offset={msg.offset()}"
+                            )
                         ),
                     )
                 except Exception as e:
