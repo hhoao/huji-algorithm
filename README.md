@@ -2,6 +2,8 @@
 
 乒乓球、羽毛球比赛视频自动剪辑：检测比赛片段，过滤捡球/回放，输出精彩片段。
 
+[English](README.en.md)
+
 ## 功能
 
 - 传入视频文件，自动检测并剪辑比赛过程
@@ -100,3 +102,8 @@ Windows：`.\setup.ps1`
 ```bash
 python -m unittest discover -s src/test -p "test_*.py"
 ```
+
+## 社区
+
+- **QQ 群**：112856301
+- **Discord**：[加入群组](https://discord.com/channels/1518551459053178960/1518551461242474558)
