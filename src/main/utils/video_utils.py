@@ -69,7 +69,7 @@ def _run_cmd(cmd: list[str]) -> str:
     try:
         return subprocess.run(cmd, check=True, capture_output=True, text=True).stdout
     except subprocess.CalledProcessError as e:
-        LOG.error(f"命令执行失败: e,{e.stderr}")
+        LOG.error(f"命令执行失败: cmd={cmd}, stderr={e.stderr}")
         raise e
 
 
@@ -363,13 +363,9 @@ def interval_extract_frames(video_path: str, frame_interval: int, temp_dir: str)
         output_dir: 输出图像目录
     """
     cmd: list[str] = [
-        "ffmpeg",
+        ffmpeg_path,
         "-loglevel",
         log_level,
-        "-hwaccel",
-        "cuda",
-        "-hwaccel_device",
-        "0",
         "-i",
         video_path,
         "-vf",
